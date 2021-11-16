@@ -218,7 +218,7 @@ class HeaderReader:
             if not line.endswith(CRLF):
                 raise ValueError('HTTP requires CRLF terminators')
 
-            if line[0] in (SPACE, TAB):
+            if line.startswith(SPACE) or line.startswith(TAB):
                 # It's a continuation line.
                 v = line.strip()
             else:
